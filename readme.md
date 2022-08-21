@@ -3,5 +3,5 @@
 - pip install paramiko
 
 
-- **положить private key файл в папку ssh-key**
+- **положить private key файл в папку ssh**
 - **запуск ansible-playbook docker.yml**
