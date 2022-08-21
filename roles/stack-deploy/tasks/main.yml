@@ -1,0 +1,21 @@
+- name: Copy nginx.conf
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /var/www/app/nginx.conf
+    mode: '0644'
+    backup: true
+
+
+- name: Copy docker-compose.yml
+  ansible.builtin.copy:
+    src: docker-compose.yml
+    dest: /var/www/app/docker-compose.yml
+    mode: '0644'
+    backup: true
+
+- name: Deploy stack 
+  docker_stack:
+    state: present
+    name: test-stack
+    compose:
+      - /var/www/app/docker-compose.yml

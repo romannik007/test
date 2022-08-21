@@ -1,0 +1,10 @@
+- hosts: swarm-manager
+  roles:
+    - install-docker
+    - docker-build
+    - swarm-init
+    - stack-deploy
+- hosts: swarm-worker
+  roles:
+    - node-join
+    

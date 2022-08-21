@@ -1,0 +1,7 @@
+- name: Add nodes
+  docker_swarm:
+      state: join
+      advertise_addr: "{{ ansible_ssh_host }}"
+      join_token: result.swarm_facts.JoinTokens.Worker
+      remote_addrs: "5.23.52.108:2377"
+  when: "ansible_default_ipv4.address != '5.23.52.108'"

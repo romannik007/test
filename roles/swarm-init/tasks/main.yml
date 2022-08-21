@@ -1,0 +1,12 @@
+- name: Init swarm
+  docker_swarm:
+    state: present
+    advertise_addr: "{{ ansible_ssh_host }}"
+  register: result
+
+- debug: 
+    var: result
+- debug:
+    var: result.swarm_facts.JoinTokens.Worker
+
+

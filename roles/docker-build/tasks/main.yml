@@ -1,0 +1,27 @@
+---
+
+- name: Create a network with IPv6 and custom IPv4 IPAM config
+  docker_network:
+    name: network_ipv6
+    enable_ipv6: yes
+    ipam_config:
+      - subnet: fdd1:ac8c:0557:7ce2::/64
+
+- name: build image app
+  docker_image:
+    name: app
+    source: build
+    build:
+      dockerfile: /var/www/app/Dockerfile
+      path: /var/www/app
+      args:
+        listen_port: 80
+
+- name: build image nginx
+  docker_image:
+    name: nginx:alpine
+    source: pull
+
+
+
+  
